@@ -11,7 +11,7 @@ var ForOM = new Module('forOM');
  * All MEAN packages require registration
  * Dependency injection is used to define required modules
  */
-ForOM.register(function(app, auth, database) {
+ForOM.register(function(app, auth, database, system) {
 
   //We enable routing. By default the Package Object is passed to the routes
   ForOM.routes(app, auth, database);
@@ -23,6 +23,9 @@ ForOM.register(function(app, auth, database) {
     roles: ['authenticated'],
     menu: 'main'
   });
+
+  // Set views path, template engine and default layout
+  app.set('views', __dirname + '/server/views');
   
   ForOM.aggregateAsset('css', 'forOM.css');
 
