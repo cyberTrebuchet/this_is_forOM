@@ -10,8 +10,7 @@ angular.module('mean.articles').config(['$stateProvider',
         url: '/articles',
         templateUrl: '/articles/views/list.html',
         requiredCircles : {
-          circles: ['authenticated'],
-          denyState: 'auth.login'
+          circles: ['authenticated', 'anonymous']
         }
       })
       .state('create article', {
@@ -25,7 +24,8 @@ angular.module('mean.articles').config(['$stateProvider',
         url: '/articles/:articleId/edit',
         templateUrl: '/articles/views/edit.html',
         requiredCircles : {
-          circles: ['can edit content']
+          circles: ['can edit content'],
+          denyState: 'auth.login'
         }
       })
       .state('article by id', {
