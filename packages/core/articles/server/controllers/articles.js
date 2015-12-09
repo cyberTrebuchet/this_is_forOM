@@ -50,7 +50,7 @@ module.exports = function(Articles) {
         },
         /**
          * Update an article
-         */
+         *
         update: function(req, res) {
             var article = req.article;
 
@@ -78,7 +78,7 @@ module.exports = function(Articles) {
         },
         /**
          * Delete an article
-         */
+         *\/
         destroy: function(req, res) {
             var article = req.article;
 

@@ -42,7 +42,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         $scope.submitted = true;
       }
     };
-
+    /**
     $scope.remove = function(article) {
       if (article) {
         article.$remove(function(response) {
@@ -75,7 +75,7 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         $scope.submitted = true;
       }
     };
-
+     */
     $scope.find = function() {
       Articles.query(function(articles) {
         $scope.articles = articles;
