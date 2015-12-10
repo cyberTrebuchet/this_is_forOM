@@ -1,4 +1,10 @@
 <section data-ng-controller="ArticlesController" data-ng-init="find()">
+  <uib-accordion close-others="false">
+    <uib-accordion-group heading="{{article.title}}" data-ng-repeat="article in articles">
+      {{article.content}}
+    </uib-accordion-group>
+  </uib-accordion>
+
   <ul class="articles unstyled">
     <li data-ng-repeat="article in articles">
       <span>{{article.created | date:'medium'}}</span> /
