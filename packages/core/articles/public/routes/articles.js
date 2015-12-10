@@ -17,7 +17,8 @@ angular.module('mean.articles').config(['$stateProvider',
         url: '/articles/create',
         templateUrl: '/articles/views/create.html',
         requiredCircles : {
-          circles: ['authenticated']
+          circles: ['authenticated'],
+          denyState: 'auth.login'
         }
       })
       .state('article by id', {
