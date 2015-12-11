@@ -34,6 +34,10 @@ var ArticleSchema = new Schema({
   },
   updated: {
     type: Array
+  },
+  parent: {
+    type: String,
+    default: '0'
   }
 });
 
