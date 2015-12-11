@@ -1,10 +1,10 @@
 <section data-ng-controller="ArticlesController" data-ng-init="find()">
   <uib-accordion close-others="false">
-    <uib-accordion-group heading="{{article.title}}" data-ng-repeat="article in articles">
+    <uib-accordion-group heading="{{article.title}} by {{article.user.name}}" data-ng-repeat="article in articles">
       {{article.content}}
     </uib-accordion-group>
   </uib-accordion>
-
+<!--
   <ul class="articles unstyled">
     <li data-ng-repeat="article in articles">
       <span>{{article.created | date:'medium'}}</span> /
@@ -15,5 +15,5 @@
       <div>{{article.content}}</div>
     </li>
   </ul>
-  <h1 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/articles/create">Create One</a>?</h1>
+  <h1 data-ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="/articles/create">Create One</a>?</h1> -->
 </section>
