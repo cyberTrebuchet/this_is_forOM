@@ -36,8 +36,8 @@ var ArticleSchema = new Schema({
     type: Array
   },
   parent: {
-    type: String,
-    default: '0'
+    type: Schema.ObjectId,
+    ref: 'Article'
   }
 });
 
