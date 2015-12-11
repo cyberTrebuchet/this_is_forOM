@@ -89,5 +89,13 @@ angular.module('mean.articles').controller('ArticlesController', ['$scope', '$st
         $scope.article = article;
       });
     };
+    /* findTheKids(_id) should return all articles whose parent matches the given _id
+    $scope.findTheKids = function(_id) {
+      Articles.get({
+        parent: _id
+      }, function(kids) {
+        $scope.kids = kids;
+      });
+    }; */
   }
 ]);
