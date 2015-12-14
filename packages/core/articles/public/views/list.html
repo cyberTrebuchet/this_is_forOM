@@ -1,8 +1,10 @@
 <section data-ng-controller="ArticlesController" data-ng-init="find()">
 
-  <form name="articleForm" class="form-horizontal col-md-6" role="form" data-ng-submit="create(articleForm.$valid)" novalidate>
+  <!-- Article form borrowed from create.html -->
+
+  <form name="articleForm" class="form-horizontal col-md-9" role="form" data-ng-submit="create(articleForm.$valid)" novalidate>
     <div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.title.$invalid }">
-      <label mean-token="'create-title'" class="col-md-3 control-label">Title</label>
+      <label mean-token="'create-title'" class="col-md-3 control-label" ng-hide="true">Title</label>
       <div class="col-md-9">
         <input name="title" type="text" class="form-control" data-ng-model="article.title" id="title" placeholder="Title" required>
         <div ng-show="submitted && articleForm.title.$invalid" class="help-block">
@@ -12,9 +14,9 @@
     </div>
 
     <div class="form-group" ng-class="{ 'has-error' : submitted && articleForm.content.$invalid }">
-      <label mean-token="'create-content'" for="content" class="col-md-3 control-label">Content</label>
+      <label mean-token="'create-content'" for="content" class="col-md-3 control-label" ng-hide="true">Content</label>
       <div class="col-md-9">
-        <textarea name="content" data-ng-model="article.content" id="content" cols="30" rows="10" placeholder="Content" class="form-control" required></textarea>
+        <textarea name="content" data-ng-model="article.content" id="content" placeholder="Content" class="form-control" required></textarea>
         <div ng-show="submitted && articleForm.content.$invalid" class="help-block">
           <p ng-show="articleForm.content.$error.required">Content is required</p>
         </div>
@@ -26,6 +28,7 @@
       <div class="col-md-9">
          <ui-select multiple ng-model="article.permissions" append-to-body="'true'" on-select="selectPermission()">
             <ui-select-match placeholder="Select permissions..." ng-click="showDescendants();">{{$item}}</ui-select-match>
+            <!-- force anonymous permission on every article -->
             <ui-select-choices name="permissions">anonymous</ui-select-choices>
           </ui-select>
       </div>
@@ -38,12 +41,16 @@
     </div>
   </form>
 
-  <uib-accordion close-others="false">
-    <uib-accordion-group data-ng-repeat="article in articles">
-      <uib-accordion-heading>"{{article.title}}" by {{article.user.name}}</uib-accordion-heading>
-      <a data-ng-href="/users/{{article.user._id}}">{{article.user.name}}</a> ({{article.created | date: 'medium'}}): {{article.content}}
-    </uib-accordion-group>
-  </uib-accordion>
+  <!-- Show all articles -->
+  <ul class="articles unstyled col-md-9">
+    <li data-ng-repeat="article in articles">
+      <h4>"{{article.title}}" by <a data-ng-href="/users/{{article.user._id}}">{{article.user.name}}</a></h4>
+      <span>
+        <span class="date">{{article.created | date: 'medium'}}:</span> {{article.content}}
+      </span>
+    </li>
+  </ul>
+
 <!-- leftovers from mean.io setup
   <ul class="articles unstyled">
     <li data-ng-repeat="article in articles">
